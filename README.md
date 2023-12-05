@@ -1,6 +1,20 @@
 # Privacy Implications of Retrieval-Based Language Models
 
-This repository contains the code for the research paper [Privacy Implications of Retrieval-Based Language Models](https://arxiv.org/abs/2305.14888). Retrieval-based LMs enhance interpretability, factuality, and adaptability using external text sources. Yet, the privacy risks of integrating retrieval datastores in LMs are not well understood. Our study is the first to thoroughly examine privacy vulnerabilities in retrieval-based LMs, especially kNN-LMs.
+This repository contains the code for our EMNLP'23 paper [Privacy Implications of Retrieval-Based Language Models](https://arxiv.org/abs/2305.14888). Retrieval-based language models (LMs) have demonstrated improved interpretability, factuality, and adaptability compared to their parametric counterparts, by incorporating retrieved text from external datastores. While it is well known that parametric models are prone to leaking private data, it remains unclear how the addition of a retrieval datastore impacts model privacy. In this work, we present the first study of privacy risks in retrieval-based LMs, particularly kNN-LMs. Our goal is to explore the optimal design and training procedure in domains where privacy is of concern, aiming to strike a balance between utility and privacy.
+
+
+![plot](./figures/teaser.png)
+
+If you find our implementation and paper helpful, please consider citing our work:
+
+```
+@inproceedings{huang2023privacy,
+  title={Privacy Implications of Retrieval-Based Language Models},
+  author={Huang, Yangsibo and Gupta, Samyak and Zhong, Zexuan and Li, Kai and Chen, Danqi},
+  booktitle={EMNLP},
+  year={2023}
+}
+```
 
 ## Environment setup
 To set up the environment, please run the following command to install the required dependencies:
@@ -100,6 +114,14 @@ python run_clm.py \
 
 
 ### 3. Launch attacks
+
+Before launching the attack, please make sure you have downloaded a slice of the Common Crawl dataset.
+```bash
+cd prompts/crawl
+wget "https://data.commoncrawl.org/crawl-data/CC-MAIN-2021-21/segments/1620243988696.23/wet/CC-MAIN-20210505203909-20210505233909-00000.warc.wet.gz"
+gzip -d CC-MAIN-20210505203909-20210505233909-00000.warc.wet.gz
+mv CC-MAIN-20210505203909-20210505233909-00000.warc.wet commoncrawl.warc.wet
+```
 
 To attack the parametric LM, simply run
 ```bash
