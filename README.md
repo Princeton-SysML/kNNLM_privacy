@@ -102,7 +102,7 @@ Step 2: Build index
 
 ```bash
 python run_clm.py \
-    --model_name_or_path checkpoints/gpt2-finetuned-enron/ \
+    --model_name_or_path gpt2 \
     --train_file data/enron/train.txt \
     --output_dir checkpoints/gpt2 \
     --dstore_dir dstore/gpt2-dstore-enron \
