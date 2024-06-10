@@ -63,7 +63,7 @@ Step 1: Save embeddings
 
 ```bash
 python run_clm.py \
-    --model_name_or_path  gpt2 \
+    --model_name_or_path  checkpoints/gpt2-finetuned-enron/ \
     --train_file data/enron/train.txt \
     --do_eval --eval_subset train  \
     --output_dir checkpoints/gpt2-finetuned-enron \
